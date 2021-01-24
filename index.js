@@ -3,7 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const dbConnect = require('./utils/database')
 
-const { PORT } = process.env
+const { PORT, SERVER } = process.env
 
 //routes
 const authRoute = require('./routes/auth')
@@ -21,8 +21,6 @@ app.use('/auth', authRoute)
 
 
 app.get('/', (req, res) => {
-    console.log("get request")
-    console.log(req)
     res.send("Hello world")
 })
 
@@ -31,7 +29,7 @@ app.get('/', (req, res) => {
 function serverStart(err){
     if(err) return console.log(error)
 
-    app.listen(PORT, () => {
+    app.listen(PORT, SERVER, () => {
         console.log(`server start at ${PORT} port`)
     })
 }
