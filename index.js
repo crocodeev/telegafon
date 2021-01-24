@@ -26,8 +26,8 @@ app.get('/', (req, res) => {
 
 //start server function as a callback to mongoose, first arg is error
 
-function serverStart(err){
-    if(err) return console.log(error)
+function serverStart(error){
+    if(error) return console.log(error)
 
     app.listen(PORT, SERVER, () => {
         console.log(`server start at ${PORT} port`)
