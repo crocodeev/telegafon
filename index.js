@@ -21,8 +21,6 @@ app.use('/auth', authRoute)
 
 
 app.get('/', (req, res) => {
-    console.log("get request")
-    console.log(req)
     res.send("Hello world")
 })
 
