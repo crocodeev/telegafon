@@ -26,9 +26,21 @@ async function authorized(req, res){
             return res.status(200).json({
                 result: true
             })
+        //if hdd didn't exist, add to db    
         }else{
+
+            const newObject = {
+                address: "",
+                hddSerial: hdd
+            }
+    
+            const filter = { phoneNumber: phone }
+            const update = { $push: { objects: newObject }}
+            
+            await Client.findOneAndUpdate(filter, update, { new: true })
+
             return res.status(200).json({
-                result: false
+                result: true
             })
         }
 

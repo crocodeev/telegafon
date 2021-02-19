@@ -24,7 +24,7 @@ async function login(req, res){
         })
         
     } catch (error) {
-        console.log("on authorize")
+        console.log("on login")
         console.log(error)
 
         return res.status(400).json({
