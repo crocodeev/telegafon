@@ -6,6 +6,13 @@ async function authorized(req, res){
 
     const { phone,
             hdd } = req.body
+
+    //don't accept requests wit empty hdd        
+    if(hdd === undefined){
+        return res.status(400).json({
+            message: "Where hdd dude?"
+        })
+    }       
     
     try {
     

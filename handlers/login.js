@@ -5,6 +5,8 @@ const Client = require('../models/Client')
 async function login(req, res){
 
     const { phone } = req.body
+
+    console.log(phone)
     
     try {
         //is phone number entry in db?
