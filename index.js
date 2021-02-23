@@ -7,6 +7,8 @@ const { PORT, SERVER } = process.env
 
 //routes
 const authRoute = require('./routes/auth')
+const setClientRoute = require('./routes/setClient')
+const getClientRoute = require('./routes/getClient')
 
 const app = express()
 
@@ -18,6 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 //------connect routes-------
 app.use('/auth', authRoute)
+app.use('/setClient', setClientRoute)
+app.use('/getClient', getClientRoute)
 
 
 app.get('/', (req, res) => {
