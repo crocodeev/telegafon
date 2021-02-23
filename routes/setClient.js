@@ -13,8 +13,6 @@ router.post('/', async (req, res) => {
     try {
 
         const admin = await Admin.findOne({ login })
-
-        console.log(admin);
     
     if(!admin){
         return res.status(400).json({
@@ -27,8 +25,6 @@ router.post('/', async (req, res) => {
         if(isMatch){
 
             const result = await Client.create({ "phoneNumber": phone }) || {}
-
-            console.log(result)
 
             return res.status(200).json({
                 message: "Object created"

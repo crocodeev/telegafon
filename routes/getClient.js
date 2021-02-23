@@ -14,7 +14,6 @@ router.post('/', async (req, res) => {
 
         const admin = await Admin.findOne({ login })
 
-        console.log(admin);
     
     if(!admin){
         return res.status(400).json({
