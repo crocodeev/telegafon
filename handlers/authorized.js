@@ -5,15 +5,16 @@ const Client = require('../models/Client')
 async function authorized(req, res){
 
     const { phone,
-            hdd } = req.body
+            hdd,
+            type } = req.body
 
     //don't accept requests wit empty hdd        
     if(hdd === undefined){
         return res.status(400).json({
             message: "Where hdd dude?"
         })
-    }       
-    
+    }
+
     try {
     
         
@@ -28,13 +29,21 @@ async function authorized(req, res){
                 result: false
             })
         }
-        //check is hdd serial exist?
-        if(objects.find( item => item.hddSerial === hdd)){
-            return res.status(200).json({
-                result: true
-            })
-        //if hdd didn't exist, add to db    
-        }else{
+
+        //check for type
+        if(type === "check"){
+
+            // is hdd number exist?
+            if(objects.find( item => item.hddSerial === hdd)){
+                return res.status(200).json({
+                    result: true
+                })}else{
+                return res.status(200).json({
+                    result: false
+                })    
+                }    
+
+        }else if (type === "add") {
 
             const newObject = {
                 address: "",
@@ -49,7 +58,14 @@ async function authorized(req, res){
             return res.status(200).json({
                 result: true
             })
+        
+        }else{
+            return res.status(400).json({
+                message: "Incorrect type"
+            })
         }
+
+          
 
     } catch (error) {
         console.log("on authorize")
