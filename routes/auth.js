@@ -1,27 +1,36 @@
 const express = require('express')
 const router = express.Router()
 const loginHandler = require('../handlers/login')
-const add_hddHandler = require('../handlers/add_hdd')
-const authorizedHandler = require('../handlers/authorized')
+const add_hdd = require('../handlers/add_hdd')
+const check_hdd = require('../handlers/check_hdd')
 
 router.post('/', async (req, res) => {
 
-    const { status } = req.body
+    const { phone,
+            hdd,
+            type } = req.body
+    
+    
+    if(!hdd){
+    
+        loginHandler(phone, res);
+    }
 
-    switch (status) {
-        case "login":
-            loginHandler(req, res)
-            break
-        case "add_hdd":
-            add_hddHandler(req, res)
-            break
-        case "authorized":
-            authorizedHandler(req, res)
-            break         
-        default:
-            return res.status(400).statusMessage("Bad request")
-            break
-    }        
+    if(type === "check"){
+
+        check_hdd(phone, hdd, res)
+    }else if(type === "add"){
+
+        add_hdd(phone, hdd, res)
+    }else{
+        return res.status(400).json({
+            message: "Bad request"
+        })
+    }
+
+    
+
+           
 })
 
 module.exports = router

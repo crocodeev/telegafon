@@ -1,15 +1,10 @@
 const Client = require('../models/Client')
 
+//is phone number entry in db?
 
-
-async function login(req, res){
-
-    const { phone } = req.body
-
-    console.log(phone)
+async function login(phone, res){
     
     try {
-        //is phone number entry in db?
         
         const { 
             phoneNumber = null
@@ -26,6 +21,7 @@ async function login(req, res){
         })
         
     } catch (error) {
+
         console.log("on login")
         console.log(error)
 

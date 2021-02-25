@@ -2,10 +2,8 @@ const Client = require('../models/Client')
 
 
 
-async function add_hdd(req, res){
-
-    const { phone, hdd } = req.body
-    
+async function add_hdd(phone, hdd, res){
+   
     try {
         
         const newObject = {
@@ -19,7 +17,7 @@ async function add_hdd(req, res){
         await Client.findOneAndUpdate(filter, update, { new: true })
 
         return res.status(200).json({
-            message: "entry added"
+            result: true
         })
         
         
