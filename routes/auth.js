@@ -14,21 +14,20 @@ router.post('/', async (req, res) => {
     if(!hdd){
     
         loginHandler(phone, res);
-    }
-
-    if(type === "check"){
-
-        check_hdd(phone, hdd, res)
-    }else if(type === "add"){
-
-        add_hdd(phone, hdd, res)
     }else{
-        return res.status(400).json({
-            message: "Bad request"
-        })
-    }
 
+        if(type === "check"){
+
+            check_hdd(phone, hdd, res)
+        }else if(type === "add"){
     
+            add_hdd(phone, hdd, res)
+        }else{
+            return res.status(400).json({
+                message: "Bad request"
+            })
+        }
+    }
 
            
 })
