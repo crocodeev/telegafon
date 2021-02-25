@@ -3,8 +3,22 @@ const Client = require('../models/Client')
 
 
 async function add_hdd(phone, hdd, res){
+
+
    
     try {
+
+        //check phone number in db
+
+        const { 
+            phoneNumber = null
+        } = await Client.findOne({ "phoneNumber": phone}) || {}
+
+        if(!phoneNumber){
+            return res.status(200).json({
+                result: false
+            })
+        }
         
         const newObject = {
             address: "",
