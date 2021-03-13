@@ -19,13 +19,17 @@ async function check_hdd(phone, hdd, res){
             })
         }
 
+        const object = objects.find( item => item.hddSerial === hdd)
+
         // is hdd number exist?
-        if(objects.find( item => item.hddSerial === hdd)){
+        if(object){
              return res.status(200).json({
-                result: true
+                "answer": true,
+                "chat_id": object.chat_id
             })}else{
             return res.status(200).json({
-                result: false
+                "answer": false,
+                "chat_id": []
             })    
             }    
   
