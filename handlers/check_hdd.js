@@ -7,22 +7,23 @@ async function check_hdd(phone, hdd, res){
     try {
     
         
-        const { 
-            phoneNumber = null,
-            objects = {}
-        } = await Client.findOne({ "phoneNumber": phone}) || {}
+        const obj = await Client.findOne({ "phoneNumber": phone}) || {}
+        const jsonObj = JSON.parse(JSON.stringify(obj))
 
         //check is phone number exist?
-        if(!phoneNumber){
+        if(!jsonObj.phoneNumber){
             return res.status(200).json({
-                result: false
+                answer: false,
+                chat_id:[]
             })
         }
 
-        const object = objects.find( item => item.hddSerial === hdd)
+        const object = jsonObj.objects.find( item => item.hddSerial === hdd)
 
         // is hdd number exist?
         if(object){
+            console.log(object);
+            console.log(object.chat_id);
              return res.status(200).json({
                 "answer": true,
                 "chat_id": object.chat_id

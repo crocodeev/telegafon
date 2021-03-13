@@ -10,15 +10,14 @@ async function add_hdd(phone, hdd, res){
 
         //check phone number in db
 
-        const { 
-            phoneNumber = null,
-            next_id = []
-        } = await Client.findOne({ "phoneNumber": phone}) || {}
+        const obj = await Client.findOne({ "phoneNumber": phone}) || {}
+        const jsonObj = JSON.parse(JSON.stringify(obj));
 
-        if(!phoneNumber){
+
+        if(!jsonObj.phoneNumber){
             return res.status(200).json({
                 "answer": false,
-                "chat_id": next_id
+                "chat_id": []
             })
         }
         
@@ -34,7 +33,7 @@ async function add_hdd(phone, hdd, res){
 
         return res.status(200).json({
             "answer": true,
-            "chat_id": next_id
+            "chat_id": jsonObj.next_id
         })
         
         
