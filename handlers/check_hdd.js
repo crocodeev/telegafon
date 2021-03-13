@@ -22,15 +22,13 @@ async function check_hdd(phone, hdd, res){
 
         // is hdd number exist?
         if(object){
-            console.log(object);
-            console.log(object.chat_id);
              return res.status(200).json({
-                "answer": true,
-                "chat_id": object.chat_id
+                answer: true,
+                chat_id: object.chat_id
             })}else{
             return res.status(200).json({
-                "answer": false,
-                "chat_id": []
+                answer: false,
+                chat_id: []
             })    
             }    
   

@@ -16,8 +16,8 @@ async function add_hdd(phone, hdd, res){
 
         if(!jsonObj.phoneNumber){
             return res.status(200).json({
-                "answer": false,
-                "chat_id": []
+                answer: false,
+                chat_id: []
             })
         }
         
@@ -32,8 +32,8 @@ async function add_hdd(phone, hdd, res){
         await Client.findOneAndUpdate(filter, update, { new: true })
 
         return res.status(200).json({
-            "answer": true,
-            "chat_id": jsonObj.next_id
+            answer: true,
+            chat_id: jsonObj.next_id
         })
         
         
