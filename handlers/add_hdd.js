@@ -4,7 +4,8 @@ const Nextid = require('../models/Nextid')
 
 async function add_hdd(phone, hdd, res){
 
-
+    console.log("hdd_Handler")
+    console.log(phone, hdd, res)
    
     try {
 
@@ -33,6 +34,8 @@ async function add_hdd(phone, hdd, res){
 
         const nextIdsObject = await Nextid.findOne()
         const chat_id = JSON.parse(JSON.stringify(nextIdsObject)).next_ids
+
+        console.log(chat_id);
 
         return res.status(200).json({
             answer: true,
