@@ -5,7 +5,7 @@ const Nextid = require('../models/Nextid')
 async function add_hdd(phone, hdd, res){
 
     console.log("hdd_Handler")
-    console.log(phone, hdd, res)
+    console.log(phone, hdd)
    
     try {
 
