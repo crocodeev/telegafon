@@ -1,5 +1,5 @@
 const Client = require('../models/Client')
-
+const Nextid = require('../models/Nextid')
 
 
 async function add_hdd(phone, hdd, res){
@@ -11,7 +11,7 @@ async function add_hdd(phone, hdd, res){
         //check phone number in db
 
         const obj = await Client.findOne({ "phoneNumber": phone}) || {}
-        const jsonObj = JSON.parse(JSON.stringify(obj));
+        const jsonObj = JSON.parse(JSON.stringify(obj))
 
 
         if(!jsonObj.phoneNumber){
@@ -31,9 +31,12 @@ async function add_hdd(phone, hdd, res){
         
         await Client.findOneAndUpdate(filter, update, { new: true })
 
+        const nextIdsObject = await Nextid.findOne()
+        const chat_id = JSON.parse(JSON.stringify(nextIdsObject)).next_ids
+
         return res.status(200).json({
             answer: true,
-            chat_id: jsonObj.next_id
+            chat_id
         })
         
         

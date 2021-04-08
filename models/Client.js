@@ -3,10 +3,10 @@ const mongoose = require('mongoose')
 const schema = new mongoose.Schema(
     {
         name: { type: String },
-        phoneNumber: { type: String, required: true, unique: true},
+        phoneNumber: { type: String, required: true, unique: true },
         objects: [{
             address: { type: String },
-            hddSerial: { type: String, required: true },
+            hddSerial: { type: String, required: true, unique: true },
         }]
 
     }
