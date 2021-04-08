@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema(
     {
-        next_ids: [{ type: String, unique: true }]
+        next_ids: [{ type: String }]
     }
 )
 
