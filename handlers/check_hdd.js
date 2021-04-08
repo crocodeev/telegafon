@@ -24,7 +24,7 @@ async function check_hdd(phone, hdd, res){
         if(object){
              return res.status(200).json({
                 answer: true,
-                chat_id: object.chat_id
+                chat_id: jsonObj.next_id
             })}else{
             return res.status(200).json({
                 answer: false,
