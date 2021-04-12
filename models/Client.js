@@ -7,6 +7,7 @@ const schema = new mongoose.Schema(
         objects: [{
             address: { type: String },
             hddSerial: { type: String, required: true },
+            chat_id: { type: Array }
         }]
 
     }
