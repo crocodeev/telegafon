@@ -48,7 +48,7 @@ async function add_hdd(phone, hdd, res){
         
         await Client.findOneAndUpdate(filter, update, { new: true })
 
-
+        console.log("ADD");
         console.log({
             answer: true,
             chat_id

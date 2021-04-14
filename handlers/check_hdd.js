@@ -25,7 +25,7 @@ async function check_hdd(phone, hdd, res){
 
         // is hdd number exist?
         if(object){
-
+            console.log("CHECK")
             console.log({
                 answer: true,
                 chat_id: object.chat_id
