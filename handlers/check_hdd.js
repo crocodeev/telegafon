@@ -12,6 +12,7 @@ async function check_hdd(phone, hdd, res){
 
         //check is phone number exist?
         if(!jsonObj.phoneNumber){
+
             return res.status(200).json({
                 answer: false,
                 chat_id:[]
@@ -24,6 +25,12 @@ async function check_hdd(phone, hdd, res){
 
         // is hdd number exist?
         if(object){
+
+            console.log({
+                answer: true,
+                chat_id: object.chat_id
+            });
+
              return res.status(200).json({
                 answer: true,
                 chat_id: object.chat_id

@@ -4,9 +4,7 @@ const Nextid = require('../models/Nextid')
 
 async function add_hdd(phone, hdd, res){
 
-    console.log("hdd_Handler")
-    console.log(phone, hdd)
-   
+
     try {
 
         //check phone number in db
@@ -14,7 +12,6 @@ async function add_hdd(phone, hdd, res){
         const obj = await Client.findOne({ "phoneNumber": phone}) || {}
         const jsonObj = JSON.parse(JSON.stringify(obj))
 
-        console.log('entry add', jsonObj);
 
         if(!jsonObj.phoneNumber){
             return res.status(200).json({
@@ -45,12 +42,17 @@ async function add_hdd(phone, hdd, res){
             chat_id: chat_id
         }
 
-        console.log('new object', newObject);
 
         const filter = { phoneNumber: phone }
         const update = { $push: { objects: newObject }}
         
         await Client.findOneAndUpdate(filter, update, { new: true })
+
+
+        console.log({
+            answer: true,
+            chat_id
+        });
 
         return res.status(200).json({
             answer: true,

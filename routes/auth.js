@@ -6,8 +6,6 @@ const check_hdd = require('../handlers/check_hdd')
 
 router.post('/', async (req, res) => {
 
-    console.log(req.body);
-
     const { phone,
             hdd,
             type } = req.body
