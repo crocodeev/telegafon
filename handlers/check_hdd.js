@@ -4,6 +4,8 @@ const Client = require('../models/Client')
 
 async function check_hdd(phone, hdd, res){
 
+    console.log("Check here")
+
     try {
     
         
